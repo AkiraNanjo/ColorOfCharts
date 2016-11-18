@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>Sample1</title>
+	<link rel="stylesheet" type="text/css" href="css/hint.min.css">
+	<link rel="stylesheet" type="text/css" href="css/stylesheet.css">
+	<!--
+	<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+-->
+	<script type="text/javascript" src="Library/jquery-2.2.3.min.js"></script>
+	<script type="text/javascript" src="Library/rgbcolor.js"></script>
+	<script type="text/javascript" src="Library/d3.min.js" charset="utf-8"></script>
+	<script type="text/javascript" src="clickEvent.js"></script>
+	<script type="text/javascript" src="diverging.js"></script>
+	<script type="text/javascript" src="Colors/Color2.js"></script>
+	<script type="text/javascript" src="Colors/Color3.js"></script>
+	<script type="text/javascript" src="Colors/colors.js"></script>
+	<script type="text/javascript" src="Controller2.js"></script>
+	<script type="text/javascript" src="hue2.js"></script>
+	<script type="text/javascript" src="LabCustom.js"></script>
+	<script type="text/javascript" src="chart.js"></script>
+	<script type="text/javascript" src="check.js"></script>
+	<script type="text/javascript" src="qualitative.js"></script>
+	<script type="text/javascript" src="sequential.js"></script>
+
+	<script type="text/javascript" src="Colors/RedColor.js"></script>
+	<!--
+	<script type="text/javascript" src="Controller1.js"></script>
+	<script type="text/javascript" src="hue1.js"></script>
+-->
+
+
+</head>
+ 
+<body style="margin:30px; " bgcolor="#EEEEEE">
+	
+
+<!--ここからカラースキーム2-->
+<h3>Color of charts</h3>
+	<div id="main">
+		<div id="nature">
+		<form name="select_scale2" onchange="changeScale2()">
+			<p class="Ps">nature of the data<br>
+			<ul>
+			<li><input type="radio" name="scale2" value="sequential" checked="checked">sequential
+			<li><input type="radio" name="scale2" value="diverging">diverging
+			<li><input type="radio" name="scale2" value="qualitative">qualitative
+			</ul>
+		</form>
+		</div>
+
+		<div id="form2"></div>
+
+		<div id="qual">
+		</div>
+		<div id="sub" style="float: left">
+		<div id="svgCircle2" style="visibility: visible;">
+			<object id="svg-fig2" data="SVG/PCCS1.svg" type="image/svg+xml" style="width: 200pt; height: 200pt; padding: 10pt"></object>
+			
+			<object id="svg-fig3" data="SVG/tone_circle.svg" type="image/svg+xml" style="width: 200pt; height: 200pt; padding: 10pt"></object>
+
+			<div id="colorscheme2" style="display:inline">
+				<!--ここにカラースキーム1を表示-->
+			</div>
+		</div>
+			<div id="chartarea"  style="float:left">
+				<div id="chartmenu"> 
+					<form name="charttype">
+						Chart type
+						<select name="chart" onchange="changechart()">
+						<option value="circle">円グラフ</option>
+						<option value="bar">棒グラフ</option>
+						</select><br>
+						Background-color<input type="color" name="colorselect" value="#FFFFFF" onchange="changebackgroundcolor()">
+					</form>
+				</div>
+				<div id="chartplace" style="clear:both"></div>
+			</div>
+		</div>
+		
+	</div>
+ 	
+
+</body>
+
+
+</html>
