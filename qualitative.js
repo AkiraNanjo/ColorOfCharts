@@ -13,6 +13,7 @@ function makeQualitativeColorScheme(){
 
 	//あるLにおけるab領域の外周点を検出して保存する
 	
+	/*
 	function make_P (Lnum){
 		var j=0; //抽出した外周点の数
 		//ループごとに配列は初期化
@@ -62,39 +63,90 @@ function makeQualitativeColorScheme(){
 	
 	make_P(defL);//最初はdefL=50にて最外周点を検出
 	
-	var now_color;
-	var before_color;
-	var cocococococ=0;
+	*/
+	
+	
+	
+	//外周点を替えるぞこの野郎
 	/*
-	var canvas = document.getElementById("canvas");
-	if (canvas.getContext){
-        var ctx = canvas.getContext('2d');
-		for(var i=0; i<P_in_circumference.length; i++){
-			var canvasRGB =  Lab2RGB(P_in_circumference[i].L,P_in_circumference[i].a,P_in_circumference[i].b);
-			RGB = "rgb("+canvasRGB.R+","+canvasRGB.G+","+canvasRGB.B+")";
-			ctx.fillStyle = RGB;
-			ctx.fillRect(P_in_circumference[i].a+125,-P_in_circumference[i].b+125,1,1);
-			ctx.fillRect(3*i,125,4,4);
-			
-			if(i!=0){
-				before_color=now_color;	
-			}
-			now_color=RGB;
-			if(before_color==now_color){
-				cocococococ++;
+	var array_of_color = [];
+	var length = P_in_circumference.length;
+	function rearray(){
+		console.log("rearray");
+		var temp_value=0;
+		var minimum_value = 100;
+		var minimum_index;
+		var firstpoint = P_in_circumference[0];
+		console.log("外周点の数="+P_in_circumference.length);
+		P_in_circumference.splice(0,1);
+		array_of_color.push(firstpoint);
+		console.log("外周点の数="+P_in_circumference.length);
+		for(var i=0;i<length;i++){
+			if(i<length-1){
+				for(var j=0; j<P_in_circumference.length-1; j++){
+					temp_value = Math.sqrt(Math.pow(array_of_color[i].a-P_in_circumference[j].a,2)+Math.pow(array_of_color[i].b-P_in_circumference[j].b,2));
+					if(temp_value<minimum_value){
+						minimum_value=temp_value;
+						minimum_index=j;
+					}
+				}
+				array_of_color.push(P_in_circumference[minimum_index]);
+				P_in_circumference.splice(minimum_index-1,1);
+			}else{
+				array_of_color.push(P_in_circumference[i]);
 			}
 		}
-		console.log("vcocococococ="+cocococococ);
-    }
-	*/
+		
+		P_in_circumference.length=0;
+		for(var i=0; i<length;i++){
+			P_in_circumference[i]=array_of_color[i];
+		}
+		*/
+	
+	//makeColorCircle();
+	
+	
+		P_in_circumference.length=0;
+		P_in_circumference = qual2;
+	console.log("qual1.length="+qual1.length);
+		var now_color;
+		var before_color;
+		var cocococococ=0;
+		var canvas = document.getElementById("canvas");
+		if (canvas.getContext){
+			var ctx = canvas.getContext('2d');
+			for(var i=0; i<P_in_circumference.length; i++){
+				var canvasRGB =  Lab2RGB(P_in_circumference[i].L,P_in_circumference[i].a,P_in_circumference[i].b);
+				RGB = "rgb("+canvasRGB.R+","+canvasRGB.G+","+canvasRGB.B+")";
+				ctx.fillStyle = RGB;
+				ctx.fillRect(P_in_circumference[i].a+125,-P_in_circumference[i].b+125,1,1);
+				ctx.fillRect(3*i,125,4,4);
+
+				if(i!=0){
+					before_color=now_color;	
+				}
+				now_color=RGB;
+				if(before_color==now_color){
+					cocococococ++;
+				}
+			}
+		}	
+	//}
+	
+
+	//rearray();
+	
+	
+	/*
 	adding_L = (decide_L()-defL)/colornum2;//中央のLと目的地の印象のLの差を色数で割ったものがLの変化量
 	//外周の色からランダムに選択する
 	function pickup_color(){
 		var randNum = Math.floor(Math.random()*P_in_circumference.length);
 		return {L:P_in_circumference[randNum].L, a:P_in_circumference[randNum].a, b:P_in_circumference[randNum].b};
 	}
+	*/
 	
-	
+	/*
 	//var loop = false;
 	var k=0; //現在の外周点何回抽出したかカウントする
 	var nominal=0; //作成した色の数
@@ -138,28 +190,57 @@ function makeQualitativeColorScheme(){
 		}
 		k++;
 	}
+	*/
 	
-	for(var i=0; i<colornum2;i++){
-		var nominal_RGB = Lab2RGB(nominal_Color[i].L,nominal_Color[i].a,nominal_Color[i].b);
-		RGB = "rgb("+nominal_RGB.R+","+nominal_RGB.G+","+nominal_RGB.B+")";
-		var hex = new RGBColor(RGB).toHex();
-		var idName = "#qualColorScheme2"+i;
-		$(idName).css("background-color", hex);
-		//var output =RGB+" "+nominal_Color[i].L+" "+nominal_Color[i].a+" "+nominal_Color[i].b
-		//$(idName).html(output);
+	
+	for(var i=0; i<12;i++){
+		var temp_qual = qual[i];
+		var dist = temp_qual.length/colornum2;
+		var rand = Math.floor(Math.random()*temp_qual.length);
+		console.log("rand="+rand);
+		var index = 0;
 		var data = new Object();
-		data.legend = hex;
-		data.value = nominal_RGB.R+nominal_RGB.G+nominal_RGB.B;
-		data.color = hex;
-		RGBDataSet[i] = data;
+		for(var j=0; j<colornum2; j++){
+			var nominal_RGB = Lab2RGB(temp_qual[index].L,temp_qual[index].a,temp_qual[index].b);
+			if(nominal_RGB.R>255){nominal_RGB.R=255;}
+			if(nominal_RGB.G>255){nominal_RGB.G=255;}
+			if(nominal_RGB.B>255){nominal_RGB.B=255;}
+			if(nominal_RGB.R<0){nominal_RGB.R=0;}
+			if(nominal_RGB.G<0){nominal_RGB.G=0;}
+			if(nominal_RGB.B<0){nominal_RGB.B=0;}
+			RGB = "rgb("+nominal_RGB.R+","+nominal_RGB.G+","+nominal_RGB.B+")";
+			console.log("j="+j+" rgb="+RGB);
+			var hex = new RGBColor(RGB).toHex();
+			var idName = "#"+i+"FirstColorScheme2"+j;
+			$(idName).css("background-color", hex);
+			//var output =RGB+" "+nominal_Color[i].L+" "+nominal_Color[i].a+" "+nominal_Color[i].b
+			//$(idName).html(output);
+			/*
+			var data = new Object();
+			data.legend = hex;
+			data.value = nominal_RGB.R+nominal_RGB.G+nominal_RGB.B;
+			data.color = hex;
+			RGBDataSet[i] = data;
+			*/
+		}
 	}
 	
 	drawchart(RGBDataSet);
-
 	
 }//calc()
 
-
+function pickup_color(num){
+	var temp_qual = qual[num];
+	var qual_scheme = [];
+	var dist = temp_qual.length/colornum2;
+	var rand = Math.floor( Math.random() * temp_qual.length );
+	var first = temp_qual[ rand ] ;
+	qual_scheme.push(first);
+	for(var i=0; i<colornum2-1;i++){
+		qual_scheme.push(temp_qual[(rand+(dist*i))%temp_qual.length]);
+	}
+	return qual_scheme;
+}
 
 
 function decide_L(){
@@ -209,4 +290,46 @@ function decide_L(){
 	}
 }
 
-
+function makeColorCircle(){
+	var first = pc2[0];
+	var dist;
+	var bef;
+	var aft;
+	var befLab;
+	var aftLab;
+	var interval_L;
+	var interval_a;
+	var interval_b;
+	var temp_L;
+	var temp_a;
+	var temp_b;
+	var temp_qual;
+	for(var k=0; k<12; k++){
+		temp_qual = qual[k];
+		for(var i=0; i<12; i++){
+			bef = pcs[i%12];
+			aft = pcs[(i+1)%12];
+			befLab = RGB2Lab(bef[k]);
+			aftLab = RGB2Lab(aft[k]);
+			//console.log("beflab="+JSON.stringify(befLab)+" aftlab="+JSON.stringify(aftLab));
+			dist = Math.sqrt(Math.pow(befLab.LS-aftLab.LS,2)+Math.pow(befLab.aS-aftLab.aS,2)+Math.pow(befLab.bS-aftLab.bS,2));
+			interval_L = (aftLab.LS-befLab.LS)/dist;
+			interval_a = (aftLab.aS-befLab.aS)/dist;
+			interval_b = (aftLab.bS-befLab.bS)/dist;
+			for(var j=0; j<Math.floor(dist);j++){
+				if(j==0){
+					temp_L = befLab.LS;
+					temp_a = befLab.aS;
+					temp_b = befLab.bS;
+					temp_qual.push({L:temp_L,a:temp_a,b:temp_b});
+				}else{
+					temp_L = temp_L+(interval_L);
+					temp_a = temp_a+(interval_a);
+					temp_b = temp_b+(interval_b);
+					temp_qual.push({L:temp_L,a:temp_a,b:temp_b});
+				}
+			}
+			//console.log("qual1="+JSON.stringify(qual1));
+		}
+	}
+}

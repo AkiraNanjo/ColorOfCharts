@@ -26,16 +26,20 @@
 		}else if(scale2=="qualitative"){
 			after_nominal=true;
 			
-			$("#qual").css("visibility","visible");
+			//$("#qual").css("visibility","visible");
 			/*
 			$("#svg-fig3").css("padding","0pt");
 			$("#svg-fig3").css("width","0%");
 			$("#svg-fig3").css("height","0%");
-			*/
+			
 			$("#svgCircle2").css("visibility","hidden");
 			$("#svg-fig2").css("padding","0pt");
 			$("#svg-fig2").css("width","0%");
-			$("#svg-fig2").css("height","0%");
+			$("#svg-fig2").css("height","0%");*/
+			$("#svgCircle2").css("visibility","visible");
+				$("#svg-fig2").css("padding","10pt");
+				$("#svg-fig2").css("width","150pt");
+				$("#svg-fig2").css("height","150pt");
 			document.getElementById("form2").innerHTML="";
 			var form_element2 = document.createElement("div");
 			var forminner = " ";
@@ -43,7 +47,7 @@
 			form_element2.innerHTML = forminner;
 			var form_object2 = document.getElementById("form2");
 			form_object2.appendChild(form_element2);
-			makeQualitativeColorScheme();	
+			//makeQualitativeColorScheme();	
 		}else if(scale2=="diverging"){
 				$("#svgCircle2").css("visibility","visible");
 				$("#svg-fig2").css("padding","10pt");
@@ -78,8 +82,7 @@ function Sample2(){
 		makedivelements();
     }
 
-//カラースキーム2を生成する
-
+//カラースキームを配置するdiv要素を生成する
 function makedivelements(){
 	var atoms=0;
 	if(coloratomos2=="#000000"){
@@ -89,6 +92,49 @@ function makedivelements(){
 	}else{
 		atoms = coloratomos2;
 	}
+	document.getElementById("colorscheme2").innerHTML="";
+    var div_element2 = document.createElement("div");
+	//div_element2.setAttribute("style","margin:0px");
+	//innerHTMLの初期化
+    var innerStr = " ";
+	for(var j=0; j<12; j++){
+		for(var i=0; i<colornum2; i++){
+			//作成する色の数だけid=color2nの箱を作成し、配置する。
+			innerStr = innerStr+("<div id=\""+j+"FirstColorScheme2"+i+"\" class=\"scheme2\">"+" "+"</div>");
+		}
+		if(j==0){
+			innerStr = innerStr+"<div class=\"tonename\"><input type=\"radio\" name=\"selectedtone\" value="+j+" checked onchange=\"changeRadio(value)\"></div>";
+		}else{
+			innerStr = innerStr+"<div class=\"tonename\"><input type=\"radio\" name=\"selectedtone\" value="+j+" onchange=\"changeRadio(value)\"></div>";
+		}
+		innerStr = innerStr+"<div class=\"tonename hint--right \" data-hint=\""+toneimage[j]+"\" id=\""+tonename[j]+"label\">"+tonename[j]+" → "+tonename[atoms]+"</div>";
+		innerStr = innerStr+"<br>"
+	}
+	innerStr = innerStr+"</table>"
+    div_element2.innerHTML = innerStr;
+    var object2 = document.getElementById("colorscheme2");
+    object2.appendChild(div_element2);
+	if(scale2=="sequential"){
+		clickedColor2="rgb(238,0,38)";
+			//redColor2();
+			//coloratomos2="#000000";
+			//console.log("clickedcolor2="+clickedColor2);
+		var return_Lab = RGB2Lab(clickedColor2);
+		for(var i=0; i<12; i++){
+			var colorScheme = makeColorScheme2(return_Lab.LS,return_Lab.aS,return_Lab.bS,i,id);
+		}
+	}else if(scale2=="diverging"){
+		clickedColor2="rgb(238,0,38)";
+		//redColor2();
+		//redColor3();
+		//coloratomos2=Sample2_form.atomos2.value;
+		var return_Lab1 = RGB2Lab(clickedColor2);
+		var return_Lab2 = RGB2Lab(clickedColor2);
+		for(var i=0; i<12; i++){
+			makeDivergingColorScheme2(return_Lab1.LS,return_Lab1.aS,return_Lab1.bS,return_Lab2.LS,return_Lab2.aS,return_Lab2.bS,i,id);
+			}
+	}
+	/*
 	if(scale2!="qualitative"){
 	document.getElementById("colorscheme2").innerHTML="";
         var div_element2 = document.createElement("div");
@@ -148,6 +194,7 @@ function makedivelements(){
         var object2 = document.getElementById("qual");
         object2.appendChild(div_element2);
 	}
+	*/
 }
 
 

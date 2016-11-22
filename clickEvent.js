@@ -195,11 +195,10 @@ $(window).load(function (){
 	//ページ読み込み時の初期化
 		defineScale2();
         var hogehoge = "#EE0026";//リストから色を取得
-        switch(hogehoge){
-            case "#EE0026":
-            //redColor2();
-            break;
-        }
+        
+	makeColorCircle();
+	
+	
 		maincolor=hogehoge;
 		coloratomos2="#000000";
 		var return_Lab = RGB2Lab(clickedColor2);

@@ -17,4 +17,16 @@ var tonename = ["Vivid","Bright","Strong","Deep","Light","Soft","Dull","Dark","P
 var toneimage = ["Vivid：鮮やか、冴えた、派手な、目立つ、生き生きした","Bright：明るい、健康的な、陽気な、華やかな","Strong：強い、くどい、動的な、情熱的な","Deep：深い、濃い、充実した、伝統的な、和風の","Light：浅い、澄んだ、子供っぽい、爽やかな、楽しい","Soft：柔らか、穏やかな、ぼんやりした","Dull：くすんだ、鈍い、中間色","Dark：暗い、大人っぽい、丈夫な、円熟した","Pale：薄い、軽い、あっさりした、弱い、女性的、若々しい、優しい、淡い、かわいい","LightGrayish：明るい灰みの、落ち着いた、渋い、おとなしい","Grayish：灰みの、濁った、地味な","DarkGrayish：暗い灰みの、陰気な、重い、硬い、男性的"];
 
 
-//var chartscolorscheme = new Array();
+var qual1 = [];
+var qual2 = [];
+var qual3 = [];
+var qual4 = [];
+var qual5 = [];
+var qual6 = [];
+var qual7 = [];
+var qual8 = [];
+var qual9 = [];
+var qual10 = [];
+var qual11 = [];
+var qual12 = [];
+var qual = [qual1,qual2,qual3,qual4,qual5,qual6,qual7,qual8,qual9,qual10,qual11,qual12];

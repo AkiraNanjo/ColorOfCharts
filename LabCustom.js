@@ -1,6 +1,10 @@
 //クリックした位置から取得したRGBをLabに変換する
 function RGB2Lab(basecolor){
-    var rgb = basecolor.replace("rgb(","");
+	var rgb;
+	if(basecolor.match("#")){
+		basecolor = new RGBColor(basecolor).toRGB();
+	}
+	rgb = basecolor.replace("rgb(","");
     rgb = rgb.replace(")","");
     rgb = rgb.split(",");
     var sr=rgb[0]/255;
