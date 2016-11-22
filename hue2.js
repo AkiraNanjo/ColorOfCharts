@@ -4,18 +4,19 @@
         //var num = colornum2;
 		if(scale2=="sequential"){
 			$("#qual").css("visibility","hidden");
-			/*
-			$("#svg-fig3").css("padding","0pt");
-			$("#svg-fig3").css("width","0%");
-			$("#svg-fig3").css("height","0%");
-			*/
-			if(after_nominal==true){
-				$("#svgCircle2").css("visibility","visible");
+			
+			
+			
+				$("#svg-fig2").css("visibility","visible");
 				$("#svg-fig2").css("padding","10pt");
-				$("#svg-fig2").css("width","150pt");
-				$("#svg-fig2").css("height","150pt");
+				$("#svg-fig2").css("width","200pt");
+				$("#svg-fig2").css("height","200pt");
+				$("#svg-fig3").css("visibility","visible");
+				$("#svg-fig3").css("padding","10pt");
+				$("#svg-fig3").css("width","250pt");
+				$("#svg-fig3").css("height","220pt");
 				after_nominal=false;
-			}
+			
 			document.getElementById("form2").innerHTML="";
 			var form_element2 = document.createElement("div");
 			var forminner = " ";
@@ -31,15 +32,15 @@
 			$("#svg-fig3").css("padding","0pt");
 			$("#svg-fig3").css("width","0%");
 			$("#svg-fig3").css("height","0%");
-			
-			$("#svgCircle2").css("visibility","hidden");
+			*/
+			$("#svg-fig2").css("visibility","hidden");
 			$("#svg-fig2").css("padding","0pt");
 			$("#svg-fig2").css("width","0%");
-			$("#svg-fig2").css("height","0%");*/
-			$("#svgCircle2").css("visibility","visible");
-				$("#svg-fig2").css("padding","10pt");
-				$("#svg-fig2").css("width","150pt");
-				$("#svg-fig2").css("height","150pt");
+			$("#svg-fig2").css("height","0%");
+			$("#svg-fig3").css("visibility","hidden");
+			$("#svg-fig3").css("padding","0pt");
+			$("#svg-fig3").css("width","0%");
+			$("#svg-fig3").css("height","0%");
 			document.getElementById("form2").innerHTML="";
 			var form_element2 = document.createElement("div");
 			var forminner = " ";
@@ -49,17 +50,17 @@
 			form_object2.appendChild(form_element2);
 			//makeQualitativeColorScheme();	
 		}else if(scale2=="diverging"){
-				$("#svgCircle2").css("visibility","visible");
+				$("#svg-fig2").css("visibility","visible");
 				$("#svg-fig2").css("padding","10pt");
-				$("#svg-fig2").css("width","150pt");
-				$("#svg-fig2").css("height","150pt");
+				$("#svg-fig2").css("width","200pt");
+				$("#svg-fig2").css("height","200pt");
+				$("#svg-fig3").css("visibility","visible");
+				$("#svg-fig3").css("padding","10pt");
+				$("#svg-fig3").css("width","250pt");
+				$("#svg-fig3").css("height","220pt");
 			
 				$("#qual").css("visibility","hidden");
-			/*
-				$("#svg-fig3").css("padding","10pt");
-				$("#svg-fig3").css("width","100pt");
-				$("#svg-fig3").css("height","100pt");
-				*/
+			
 				after_nominal=false;
 			
 			document.getElementById("form2").innerHTML="";
@@ -116,9 +117,6 @@ function makedivelements(){
     object2.appendChild(div_element2);
 	if(scale2=="sequential"){
 		clickedColor2="rgb(238,0,38)";
-			//redColor2();
-			//coloratomos2="#000000";
-			//console.log("clickedcolor2="+clickedColor2);
 		var return_Lab = RGB2Lab(clickedColor2);
 		for(var i=0; i<12; i++){
 			var colorScheme = makeColorScheme2(return_Lab.LS,return_Lab.aS,return_Lab.bS,i,id);
@@ -164,7 +162,6 @@ function makedivelements(){
 			clickedColor2="rgb(238,0,38)";
 			//redColor2();
 			//coloratomos2="#000000";
-			//console.log("clickedcolor2="+clickedColor2);
 			var return_Lab = RGB2Lab(clickedColor2);
 			for(var i=0; i<12; i++){
 				var colorScheme = makeColorScheme2(return_Lab.LS,return_Lab.aS,return_Lab.bS,i,id);

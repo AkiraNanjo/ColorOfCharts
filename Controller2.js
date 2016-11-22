@@ -53,6 +53,7 @@ function changeScale2(){
 		//coloratomos2 = Sample2_form.atomos2.value;
 		defineScale2();
 		makeQualitativeColorScheme();
+		makechart(clickedtone);
 		//drawchart(RGBDataSet);
 	}else if(scale2=="sequential"){
 		coloratomos2 = "#000000";
@@ -66,7 +67,6 @@ function changeScale2(){
 		//var colorScheme = //makeDivergingColorScheme2(return_Lab1.LS,return_Lab1.aS,return_Lab1.bS,return_Lab2.LS,return_Lab2.aS,return_Lab2.bS,);
 		makechart(clickedtone);
 	}
-	console.log(coloratomos2);
     //defineScale2();
 	
 }
@@ -88,8 +88,6 @@ function changeAtomos2(){
 		makedivelements();
 		var return_Lab1 = RGB2Lab(clickedColor2);
 		var return_Lab2 = RGB2Lab(clickedColor2);
-		console.log("changeatomos, diverging");
-		console.log("in diverging, coloratomos="+coloratomos2);
 		for (var i=0; i<12;i++){		makeDivergingColorScheme2(return_Lab1.LS,return_Lab1.aS,return_Lab1.bS,return_Lab2.LS,return_Lab2.aS,return_Lab2.bS,i,id);
 		}
 		makechart(clickedtone);
@@ -106,7 +104,6 @@ function changeAtomos2(){
 
 //2の色数メニューが変更された時に呼び出される
 function changeNum2(){
-	console.log("scale="+scale2);
 	colornum2 = Sample2_form.number2.value;
 	document.getElementById("chartplace").innerHTML="";
 	if(scale2=="sequential"){
@@ -115,9 +112,9 @@ function changeNum2(){
 		for (var i=0; i<12;i++){
 				makeColorScheme2(return_Lab.LS,return_Lab.aS,return_Lab.bS,i,id);
 			}
-		makechart(clickedtone);
+		
 	}else if(scale2=="qualitative"){
-		RGBDataSet=[];
+		//RGBDataSet=[];
 		Sample2();
 		makeQualitativeColorScheme();
 		//drawchart(RGBDataSet);
@@ -128,8 +125,9 @@ function changeNum2(){
 		for (var i=0; i<12;i++){
 				makeDivergingColorScheme2(return_Lab1.LS,return_Lab1.aS,return_Lab1.bS,return_Lab2.LS,return_Lab2.aS,return_Lab2.bS,i,id);
 		}
-		makechart(clickedtone);
+		//makechart(clickedtone);
 	}
+	makechart(clickedtone);
 }
 /*
 //2のメインカラーメニューが変更された場合に変更される
@@ -192,7 +190,6 @@ function changeMainColor2(){
 function changeSubColor2(){
 	var hogehoge = Sample2_form.drop2.value;//リストから色を取得
 	var hogehoge2 = Sample2_form.drop3.value;
-	console.log("hogehoge2="+hogehoge2);
     switch(hogehoge2){
 		case "#EE0026":
 			redColor3();

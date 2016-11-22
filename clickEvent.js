@@ -134,7 +134,6 @@ $(window).load(function (){
 	$Vividtone.click(function(){
 		coloratomos2 = 0;
 		changeAtomos2();
-		console.log("vivid3 click");
     });
 	$Brighttone.click(function(){
 			coloratomos2 = 1;
@@ -154,7 +153,6 @@ $(window).load(function (){
         });
 	$Softtone.click(function(){
 			coloratomos2 = 5;
-		console.log("Soft3 click, coloratomos="+coloratomos2);
 			changeAtomos2();
         });
 	$Dulltone.click(function(){
@@ -217,8 +215,6 @@ function clickevent(){
 			clickedColor2 = circlecolor;
            //$selectedcolor2.css({"fill": circlecolor});
            var return_Lab = RGB2Lab(circlecolor);
-			
-		　　console.log("id="+id);
 			if(scale2=="diverging"){
 			//coloratomos2=Sample2_form.atomos2.value;
 			var return_Lab1 = RGB2Lab(clickedColor2);

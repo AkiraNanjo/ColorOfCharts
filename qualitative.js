@@ -108,7 +108,6 @@ function makeQualitativeColorScheme(){
 	
 		P_in_circumference.length=0;
 		P_in_circumference = qual2;
-	console.log("qual1.length="+qual1.length);
 		var now_color;
 		var before_color;
 		var cocococococ=0;
@@ -195,11 +194,9 @@ function makeQualitativeColorScheme(){
 	
 	for(var i=0; i<12;i++){
 		var temp_qual = qual[i];
-		var dist = temp_qual.length/colornum2;
-		var rand = Math.floor(Math.random()*temp_qual.length);
-		console.log("rand="+rand);
+		var dist = Math.floor(temp_qual.length/colornum2);
 		var index = 0;
-		var data = new Object();
+		//var data = new Object();
 		for(var j=0; j<colornum2; j++){
 			var nominal_RGB = Lab2RGB(temp_qual[index].L,temp_qual[index].a,temp_qual[index].b);
 			if(nominal_RGB.R>255){nominal_RGB.R=255;}
@@ -209,24 +206,12 @@ function makeQualitativeColorScheme(){
 			if(nominal_RGB.G<0){nominal_RGB.G=0;}
 			if(nominal_RGB.B<0){nominal_RGB.B=0;}
 			RGB = "rgb("+nominal_RGB.R+","+nominal_RGB.G+","+nominal_RGB.B+")";
-			console.log("j="+j+" rgb="+RGB);
 			var hex = new RGBColor(RGB).toHex();
 			var idName = "#"+i+"FirstColorScheme2"+j;
 			$(idName).css("background-color", hex);
-			//var output =RGB+" "+nominal_Color[i].L+" "+nominal_Color[i].a+" "+nominal_Color[i].b
-			//$(idName).html(output);
-			/*
-			var data = new Object();
-			data.legend = hex;
-			data.value = nominal_RGB.R+nominal_RGB.G+nominal_RGB.B;
-			data.color = hex;
-			RGBDataSet[i] = data;
-			*/
+			index += dist;
 		}
 	}
-	
-	drawchart(RGBDataSet);
-	
 }//calc()
 
 function pickup_color(num){
@@ -311,7 +296,6 @@ function makeColorCircle(){
 			aft = pcs[(i+1)%12];
 			befLab = RGB2Lab(bef[k]);
 			aftLab = RGB2Lab(aft[k]);
-			//console.log("beflab="+JSON.stringify(befLab)+" aftlab="+JSON.stringify(aftLab));
 			dist = Math.sqrt(Math.pow(befLab.LS-aftLab.LS,2)+Math.pow(befLab.aS-aftLab.aS,2)+Math.pow(befLab.bS-aftLab.bS,2));
 			interval_L = (aftLab.LS-befLab.LS)/dist;
 			interval_a = (aftLab.aS-befLab.aS)/dist;
@@ -329,7 +313,6 @@ function makeColorCircle(){
 					temp_qual.push({L:temp_L,a:temp_a,b:temp_b});
 				}
 			}
-			//console.log("qual1="+JSON.stringify(qual1));
 		}
 	}
 }

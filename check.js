@@ -1,6 +1,5 @@
 //背景色とチャートの色の被りを検出する
 function checkbackgroundcolor(){
-	console.log("色かぶり検出中");
 	var flag = false;
 	var backLab;
 	var chartLab;
@@ -74,6 +73,7 @@ function recommend_tone(){
 			}
 		}
 	}
+	
 	coloring_recommended_ton_label(approximate_tone);		
 }
 
@@ -90,7 +90,7 @@ function recommend_tone(){
 */
 function coloring_recommended_ton_label(tone){
 	var labelname;
-	
+	console.log("back-tone="+tone);
 	switch (tone){
 		case "Vivid":
 			for(var i=0; i<12; i++){
@@ -106,7 +106,6 @@ function coloring_recommended_ton_label(tone){
 			for(var i=0; i<12; i++){
 				labelname="#"+tonename[i]+"label";
 				if(labelname=="#Vividlabel"||labelname=="#Brightlabel"||labelname=="#Stronglabel"||labelname=="#Lightlabel"||labelname=="#Softlabel"){
-					console.log("Brightcheck!!!");
 					$(labelname).css("color", "red");
 				}else{
 					$(labelname).css("color", "black");

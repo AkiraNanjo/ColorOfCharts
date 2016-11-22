@@ -37,7 +37,6 @@ function makeDivergingColorScheme2(Lstar1,aStar1,bStar1,Lstar2,aStar2,bStar2,ton
 	var goalColor2;
 	//var goalcolor;
 	if(coloratomos2!="#000000" && coloratomos2 != "#FFFFFF"){
-		console.log("makediverging");
 		var templeftRGB = new RGBColor(usigColor[coloratomos2]);
 		var templeft = templeftRGB.toRGB();
 		var temprightRGB = new RGBColor(usingRight[coloratomos2]);
@@ -52,10 +51,8 @@ function makeDivergingColorScheme2(Lstar1,aStar1,bStar1,Lstar2,aStar2,bStar2,ton
 		goalColor1 = goalRGB;
 		goalColor2 = goalRGB;
 	}else{
-		//console.log("atoms="+coloratomos2);
 		goalColor1 = new RGBColor(coloratomos2).toRGB();
 		goalColor2=goalColor1;
-		//console.log("else goalcolor="+goalColor1);
 	}
 	
 	
@@ -96,7 +93,6 @@ function makeDivergingColorScheme2(Lstar1,aStar1,bStar1,Lstar2,aStar2,bStar2,ton
 			calcbStar[i+1]=dividing_b;
 			calcRGB = Lab2RGB(dividing_L,dividing_a,dividing_b);
 			if(calcRGB.R>255||calcRGB.G>255||calcRGB.B>255||calcRGB.R<0||calcRGB.G<0||calcRGB.B<0){
-				console.log("うおああああああああああ");
 				var check=0;
 				for(var t=0; check<100&&calcRGB.R>255||calcRGB.G>255||calcRGB.B>255||calcRGB.R<0||calcRGB.G<0||calcRGB.B<0; t=t+0.01){
 					dividing_L = dividing_L-t*n1.nL;
@@ -110,7 +106,6 @@ function makeDivergingColorScheme2(Lstar1,aStar1,bStar1,Lstar2,aStar2,bStar2,ton
 			hex = new RGBColor(RGB).toHex();
 			//hex = testColor.toHex();
 			var idName = "#"+tone+"FirstColorScheme2"+(i+1);
-			//console.log("idname="+idName);
 			//$(function(){
 			$(idName).css("background-color", hex);
 			//$(idName).html(" "+RGB+" ");
@@ -133,7 +128,6 @@ function makeDivergingColorScheme2(Lstar1,aStar1,bStar1,Lstar2,aStar2,bStar2,ton
 			calcbStar[i+1]=dividing_b;
 			calcRGB = Lab2RGB(dividing_L,dividing_a,dividing_b);
 			if(calcRGB.R>255||calcRGB.G>255||calcRGB.B>255||calcRGB.R<0||calcRGB.G<0||calcRGB.B<0){
-				console.log("うおああああああああああ");
 				var check=0;
 				for(var t=0; check<100&&calcRGB.R>255||calcRGB.G>255||calcRGB.B>255||calcRGB.R<0||calcRGB.G<0||calcRGB.B<0; t=t+0.01){
 					dividing_L = dividing_L-t*n1.nL;
@@ -171,7 +165,6 @@ function makeDivergingColorScheme2(Lstar1,aStar1,bStar1,Lstar2,aStar2,bStar2,ton
 			calcbStar[i+1]=dividing_b;
 			calcRGB = Lab2RGB(dividing_L,dividing_a,dividing_b);
 			if(calcRGB.R>255||calcRGB.G>255||calcRGB.B>255||calcRGB.R<0||calcRGB.G<0||calcRGB.B<0){
-				console.log("うおああああああああああ");
 				var check=0;
 				for(var t=0; check<100&&calcRGB.R>255||calcRGB.G>255||calcRGB.B>255||calcRGB.R<0||calcRGB.G<0||calcRGB.B<0; t=t+0.01){
 					dividing_L = dividing_L-t*n1.nL;
@@ -186,11 +179,7 @@ function makeDivergingColorScheme2(Lstar1,aStar1,bStar1,Lstar2,aStar2,bStar2,ton
 			//hex = testColor.toHex();
 			//var idName = "#ColorScheme"+(i+1);
 			var idName = "#"+tone+"FirstColorScheme2"+(i+1);
-			//console.log("idname="+idName);
-			//$(function(){
 			$(idName).css("background-color", hex);
-			//$(idName).html(" "+RGB+" ");
-			//});
 		}
 		//カラー2、右側のカラースキーム
 		calcRGB = Lab2RGB(Lstar2,aStar2,bStar2);
@@ -209,7 +198,6 @@ function makeDivergingColorScheme2(Lstar1,aStar1,bStar1,Lstar2,aStar2,bStar2,ton
 			calcbStar[i+1]=dividing_b;
 			calcRGB = Lab2RGB(dividing_L,dividing_a,dividing_b);
 			if(calcRGB.R>255||calcRGB.G>255||calcRGB.B>255||calcRGB.R<0||calcRGB.G<0||calcRGB.B<0){
-				//console.log("うおああああああああああ");
 				var check=0;
 				for(var t=0; check<100&&calcRGB.R>255||calcRGB.G>255||calcRGB.B>255||calcRGB.R<0||calcRGB.G<0||calcRGB.B<0; t=t+0.01){
 					dividing_L = dividing_L-t*n1.nL;
@@ -232,7 +220,6 @@ function makeDivergingColorScheme2(Lstar1,aStar1,bStar1,Lstar2,aStar2,bStar2,ton
 		testColor = new RGBColor(goalColor1);
 		hex = testColor.toHex();
 		var centerName = "#"+tone+"FirstColorScheme2"+Math.floor(colornum2/2);
-		//console.log("centernum="+centerName);
 		$(centerName).css("background-color", hex);
 		RGB = new RGBColor(hex).toRGB();
 		//$(centerName).html(new RGBColor(hex).toRGB());
