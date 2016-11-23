@@ -62,13 +62,13 @@ function drawchart(dataset){
 		.enter()
 		.append("rect") // SVGでの四角形を示す要素を生成
 		.attr("x", function(d,i){   // X座標を配列の順序に応じて計算
-			return i * 30;
+			return i * 30+30;
 		})
 		.attr("y", function(d){ // 縦幅を配列の内容に応じて計算
-			return barHeight-(d.value*10)+50 +"px";
+			return barHeight-(d.value*11)+50 +"px";
 		})
 		.attr("height", function(d){    // 縦幅を配列の内容に応じて計算
-			return (d.value*10) +"px";
+			return (d.value*11) +"px";
 		})
 		.attr("width", 30)  // 棒グラフの横幅を指定
 		.attr("fill",function(d){
@@ -117,7 +117,33 @@ function drawchart(dataset){
 		.attr("stroke", "red")  // 線の色を指定
 		.attr("fill", "none");  // 塗り潰しなし。指定しないと黒色で塗り潰される
 		*/
-	}
+	}else if(selectedchart=="scatter"){
+		document.getElementById("chartplace").innerHTML=" ";
+		var list = [];
+		for(var i=0; i<colornum2; i++){
+			var data = new Object();
+			data.x_axis = Math.floor(Math.random()*401);
+			data.y_axis = Math.floor(Math.random()*151);
+			data.color = dataset[i].color;
+			list.push(data);
+		}
+		var w = 500;
+		var h = 300;
+		var svg = d3.select("#chartplace")
+			.append("svg")
+			.attr("width", w)
+			.attr("height", h);
+		for(var i=0; i<colornum2; i++){
+			for(var j=0; j<20; j++){
+				svg.append('circle')
+				.attr("cx",Math.floor(Math.random()*401+50))
+				.attr("cy",Math.floor(Math.random()*151+50))
+				.attr("r",5)
+				.attr("fill",list[i].color)
+			}
+		}
+		
+		}
 	
 	checkbackgroundcolor();
 }

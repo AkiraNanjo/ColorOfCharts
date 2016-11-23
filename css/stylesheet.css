@@ -11,7 +11,14 @@
     width: 50px;
     height: 30px;
 	line-height: 0;
-	
+}
+.usedscheme{
+    display: table-cell;
+	line-height: 0;
+}
+
+#alertArea{
+	height: 300px;
 }
 
 #colorscheme2{
@@ -26,6 +33,12 @@
 	text-align: center;
 	padding-left: 7px;
 	padding-right: 5px;
+}
+
+.usedscheme{
+	vertical-align: middle;
+	text-align: center;
+	padding-top: 10px;
 }
 
 #nature{
@@ -57,13 +70,14 @@
 
 
 #chartplace{
-	height: 648px;
+	height: 400px;
 	width: 500px;
 	background-color: white;
 }
 
 #chartarea{
 	border-style: double;
+	width: 500px;
 }
 
 #chartmenu{

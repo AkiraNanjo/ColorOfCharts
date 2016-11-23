@@ -4,21 +4,55 @@ function checkbackgroundcolor(){
 	var backLab;
 	var chartLab;
 	var deltaE;
+	
+	//現在使用中のカラースキームを表示する
+	function makeUsedScheme(error){
+		document.getElementById("alertArea").innerHTML="";
+		var div_element2 = document.createElement("div");
+		var innerStr = " ";
+		for(var i=0; i<colornum2; i++){
+			//作成する色の数だけid=color2nの箱を作成し、配置する。
+			if(error!=i){
+				innerStr = innerStr+("<div id=\"usedColorScheme"+i+"\" class=\"usedscheme\"><font size=\"50\">"+i+"</font></div>");
+			}else{
+				innerStr = innerStr+("<div id=\"usedColorScheme"+i+"\" class=\"usedscheme\"><font size=\"50\">"+i+"</font></div>");
+			}
+		}
+		div_element2.innerHTML = innerStr;
+		var object2 = document.getElementById("alertArea");
+		object2.appendChild(div_element2);
+		for(var i=0; i<colornum2; i++){
+			var idName = "#usedColorScheme"+i;
+			var hex = new RGBColor(RGBDataSet[i].color).toHex();
+			$(idName).css("background-color",hex);
+			$(idName).css("width",(500/colornum2));
+			$(idName).css("height",(300/colornum2));
+		}
+	}
+	//makeUsedScheme(null);
+	//チェック開始
 	chartLab = RGB2Lab(new RGBColor(backgroundcolor).toRGB());
 	for(var i=0; i<colornum2;i++){
 		backLab = RGB2Lab(chartcolorscheme[i]);
 		deltaE = Math.sqrt(Math.pow(backLab.LS-chartLab.LS,2)+Math.pow(backLab.aS-chartLab.aS,2)+Math.pow(backLab.bS-chartLab.bS,2));
 		if(deltaE < 13){
-			$("#chartplace").css("border-style","dashed");
-			$("#chartplace").css("border-color","#ff0000");
+			//$("#chartplace").css("border-style","dashed");
+			//$("#chartplace").css("border-color","#ff0000");
 			flag = true;
+			makeUsedScheme(i);
+			var div_element2 = document.createElement("div");
+			var innerStr = " ";
+			innerStr = "Color of number "+i+" is not able to take enough color difference."
+			div_element2.innerHTML = innerStr;
+			var object2 = document.getElementById("alertArea");
+			object2.appendChild(div_element2);
 		}
 	}
 	if(!flag){
-		$("#chartplace").css("border-style","none");
+		//$("#chartplace").css("border-style","none");
+		makeUsedScheme(null);
 	}
 	recommend_tone();
-	
 	checkbalanceadjoincolor();
 }
 
