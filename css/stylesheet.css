@@ -19,6 +19,7 @@
 
 #alertArea{
 	height: 300px;
+	padding: 15px;
 }
 
 #colorscheme2{
@@ -38,7 +39,7 @@
 .usedscheme{
 	vertical-align: middle;
 	text-align: center;
-	padding-top: 10px;
+	padding-top: 15px;
 }
 
 #nature{
@@ -78,6 +79,7 @@
 #chartarea{
 	border-style: double;
 	width: 500px;
+	height: 720px;
 }
 
 #chartmenu{

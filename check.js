@@ -13,9 +13,9 @@ function checkbackgroundcolor(){
 		for(var i=0; i<colornum2; i++){
 			//作成する色の数だけid=color2nの箱を作成し、配置する。
 			if(error!=i){
-				innerStr = innerStr+("<div id=\"usedColorScheme"+i+"\" class=\"usedscheme\"><font size=\"50\">"+i+"</font></div>");
+				innerStr = innerStr+("<div id=\"usedColorScheme"+i+"\" class=\"usedscheme\"><font size=\"50\">"+(i+1)+"</font></div>");
 			}else{
-				innerStr = innerStr+("<div id=\"usedColorScheme"+i+"\" class=\"usedscheme\"><font size=\"50\">"+i+"</font></div>");
+				innerStr = innerStr+("<div id=\"usedColorScheme"+i+"\" class=\"usedscheme\"><font size=\"50\">"+(i+1)+"</font></div>");
 			}
 		}
 		div_element2.innerHTML = innerStr;
@@ -26,7 +26,7 @@ function checkbackgroundcolor(){
 			var hex = new RGBColor(RGBDataSet[i].color).toHex();
 			$(idName).css("background-color",hex);
 			$(idName).css("width",(500/colornum2));
-			$(idName).css("height",(300/colornum2));
+			$(idName).css("height",60);
 		}
 	}
 	//makeUsedScheme(null);
@@ -42,7 +42,7 @@ function checkbackgroundcolor(){
 			makeUsedScheme(i);
 			var div_element2 = document.createElement("div");
 			var innerStr = " ";
-			innerStr = "Color of number "+i+" is not able to take enough color difference."
+			innerStr = "<h2>ATTENTION</h2><font size=\"5\">The Color of number <font color=\"red\">"+(i+1)+"</font> is not able to take enough color difference.</font>"
 			div_element2.innerHTML = innerStr;
 			var object2 = document.getElementById("alertArea");
 			object2.appendChild(div_element2);

@@ -72,15 +72,12 @@ function makeQualitativeColorScheme(){
 	var array_of_color = [];
 	var length = P_in_circumference.length;
 	function rearray(){
-		console.log("rearray");
 		var temp_value=0;
 		var minimum_value = 100;
 		var minimum_index;
 		var firstpoint = P_in_circumference[0];
-		console.log("外周点の数="+P_in_circumference.length);
 		P_in_circumference.splice(0,1);
 		array_of_color.push(firstpoint);
-		console.log("外周点の数="+P_in_circumference.length);
 		for(var i=0;i<length;i++){
 			if(i<length-1){
 				for(var j=0; j<P_in_circumference.length-1; j++){
@@ -118,7 +115,7 @@ function makeQualitativeColorScheme(){
 				var canvasRGB =  Lab2RGB(P_in_circumference[i].L,P_in_circumference[i].a,P_in_circumference[i].b);
 				RGB = "rgb("+canvasRGB.R+","+canvasRGB.G+","+canvasRGB.B+")";
 				ctx.fillStyle = RGB;
-				ctx.fillRect(P_in_circumference[i].a+125,-P_in_circumference[i].b+125,1,1);
+				//ctx.fillRect(P_in_circumference[i].a+125,-P_in_circumference[i].b+125,4,4);
 				ctx.fillRect(3*i,125,4,4);
 
 				if(i!=0){
@@ -171,7 +168,6 @@ function makeQualitativeColorScheme(){
 				var sub_a = temp_nominal_Color[i].a-nominal_Color[l].a;
 				var sub_b = temp_nominal_Color[i].b-nominal_Color[l].b;
 				var sub_nominal = Math.sqrt(Math.pow(sub_a,2)+Math.pow(sub_b,2));
-				//console.log("sub_a="+sub_a+" sub_b="+sub_b+" sub_nominal="+sub_nominal);
 				//距離差がn以下なら識別不可としてループ打ち切り
 				if(sub_nominal<delta_E){
 					determine_possible=false;
@@ -180,7 +176,6 @@ function makeQualitativeColorScheme(){
 			}
 			//最後まで検査して識別可能であればその色を保存する
 			if(determine_possible==true){
-				//console.log("nominal="+nominal);
 				nominal_Color[nominal] = temp_nominal_Color[i];
 				nominal++;
 				defL = Math.round(defL+adding_L);
