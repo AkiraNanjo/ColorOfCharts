@@ -108,8 +108,13 @@ function makedivelements(){
 		}else{
 			innerStr = innerStr+"<div class=\"tonename\"><input type=\"radio\" name=\"selectedtone\" value="+j+" onchange=\"changeRadio(value)\"></div>";
 		}
-		innerStr = innerStr+"<div class=\"tonename hint--right \" data-hint=\""+toneimage[j]+"\" id=\""+tonename[j]+"label\">"+tonename[j]+" → "+tonename[atoms]+"</div>";
-		innerStr = innerStr+"<br>"
+		if(scale2!="qualitative"){
+			innerStr = innerStr+"<div class=\"tonename hint--right \" data-hint=\""+toneimage[j]+"\" id=\""+tonename[j]+"label\">"+tonename[j]+" → "+tonename[atoms]+"</div>";
+			innerStr = innerStr+"<br>"
+		}else{
+			innerStr = innerStr+"<div class=\"tonename hint--right \" data-hint=\""+toneimage[j]+"\" id=\""+tonename[j]+"label\">"+tonename[j]+"</div>";
+			innerStr = innerStr+"<br>"
+		}
 	}
 	innerStr = innerStr+"</table>"
     div_element2.innerHTML = innerStr;

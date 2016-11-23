@@ -74,6 +74,49 @@ function drawchart(dataset){
 		.attr("fill",function(d){
 			return d.color;
 		}); // 棒グラフの色を赤色に設定
+	}else if(selectedchart=="line"){
+		document.getElementById("chartplace").innerHTML=" ";
+		var list1 = [10, 30, 5, 60, 40, 178, 56, 130, 24, 80];
+		var list2 = [190, 170, 140, 160, 100, 50, 40, 30, 100, 130];
+		var list = [];
+		for(var i=0; i<colornum2; i++){
+			var temp_list = [];
+			for(var j=0; j<10; j++){
+				temp_list.push(Math.floor(Math.random()*201));
+			}
+			list.push(temp_list);
+		}
+		var svgWidth = 500; // SVG領域の横幅
+		var svgHeight = 240;    // SVG領域の縦幅
+		//SVGの表示領域を生成
+		var svg = d3.select("#chartplace").append("svg")
+		.attr("width", svgWidth).attr("height", svgHeight)
+		//.data(list) // データを設定
+		//.enter()
+		// 折れ線を生成
+		var line = d3.line()
+		.x(function(d, i){ return i * svgWidth/(list1.length-1); }) // 横方向はSVG領域に合わせて調整。データは最低2個あるのが前提
+		.y(function(d){ return svgHeight-d; })  // 縦方向は数値そのままでスケール等しない
+		// 折れ線グラフ1を描画
+		for(var i=0; i<colornum2; i++){
+			svg.append("path")
+			.attr("d", line(list[i])) // 線を描画
+			.attr("stroke", dataset[i].color)    // 線の色を指定
+			.attr("stroke-width", 4)  
+			.attr("fill", "none");  // 塗り潰しなし。指定しないと黒色で塗り潰される
+			console.log("list[i]="+JSON.stringify(list[i]));
+		}
+		/*
+		svg.append("path")
+		.attr("d", line(list1)) // 線を描画
+		.attr("stroke", "black")    // 線の色を指定
+		.attr("fill", "none");  // 塗り潰しなし。指定しないと黒色で塗り潰される
+		// 折れ線グラフ2を描画
+		svg.append("path")
+		.attr("d", line(list2)) // 線を描画
+		.attr("stroke", "red")  // 線の色を指定
+		.attr("fill", "none");  // 塗り潰しなし。指定しないと黒色で塗り潰される
+		*/
 	}
 	
 	checkbackgroundcolor();
