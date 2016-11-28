@@ -30,7 +30,14 @@
 	<script type="text/javascript" src="hue1.js"></script>
 -->
 
-
+<script>
+  function f_dragstart(event){
+    //ドラッグするデータのid名をDataTransferオブジェクトにセット
+    event.dataTransfer.setData("text", event.target.id);
+  }
+</script>
+	
+	
 </head>
  
 <body style="margin:30px; " bgcolor="#EEEEEE">
@@ -53,7 +60,7 @@
 
 		<div id="form2"></div>
 
-		<div id="qual">
+		<div id="qual" draggable="true" ondragstart="f_dragstart(event)">
 		</div>
 		<div id="sub" style="float: left">
 		<div id="svgCircle2" style="visibility: visible;">
