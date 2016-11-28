@@ -27,7 +27,7 @@
 		}else if(scale2=="qualitative"){
 			after_nominal=true;
 			
-			//$("#qual").css("visibility","visible");
+			$("#qual").css("visibility","visible");
 			/*
 			$("#svg-fig3").css("padding","0pt");
 			$("#svg-fig3").css("width","0%");
@@ -116,7 +116,7 @@ function makedivelements(){
 			innerStr = innerStr+"<br>"
 		}
 	}
-	innerStr = innerStr+"</table>"
+	//innerStr = innerStr+"</table>"
     div_element2.innerHTML = innerStr;
     var object2 = document.getElementById("colorscheme2");
     object2.appendChild(div_element2);

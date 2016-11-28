@@ -31,80 +31,80 @@ $(window).load(function (){
 							//Color1();
         });
 	
-	$pccs4.click(function(){var circlecolor = $(this).css("fill");
-			clickedColor2 = circlecolor;
+	$pccs4.click(function(){
+			//clickedColor2 = circlecolor;
            //$selectedcolor2.css({"fill": circlecolor});
            //var return_Lab = RGB2Lab(circlecolor);
 			id =4;
 			clickevent();
         });
-	$pccs6.click(function(){var circlecolor = $(this).css("fill");
-			clickedColor2 = circlecolor;
+	$pccs6.click(function(){
+			//clickedColor2 = circlecolor;
            //$selectedcolor2.css({"fill": circlecolor});
            //var return_Lab = RGB2Lab(circlecolor);
 			id =6;
 			clickevent();
         });
-	$pccs8.click(function(){var circlecolor = $(this).css("fill");
-			clickedColor2 = circlecolor;
+	$pccs8.click(function(){
+			//clickedColor2 = circlecolor;
            //$selectedcolor2.css({"fill": circlecolor});
            //var return_Lab = RGB2Lab(circlecolor);
 			id =8;
 			clickevent();
         });
-	$pccs10.click(function(){var circlecolor = $(this).css("fill");
-			clickedColor2 = circlecolor;
+	$pccs10.click(function(){
+			//clickedColor2 = circlecolor;
            //$selectedcolor2.css({"fill": circlecolor});
            //var return_Lab = RGB2Lab(circlecolor);
 		   //var colorScheme = makeColorScheme2(return_Lab.LS,return_Lab.aS,return_Lab.bS);
 			id =10;
 			clickevent();
         });
-	$pccs12.click(function(){var circlecolor = $(this).css("fill");
-			clickedColor2 = circlecolor;
+	$pccs12.click(function(){
+			//clickedColor2 = circlecolor;
            //$selectedcolor2.css({"fill": circlecolor});
            //var return_Lab = RGB2Lab(circlecolor);
 			id =12;
 			clickevent();
 							 //Color12();
         });
-	$pccs14.click(function(){var circlecolor = $(this).css("fill");
-			clickedColor2 = circlecolor;
+	$pccs14.click(function(){
+			//clickedColor2 = circlecolor;
            //$selectedcolor2.css({"fill": circlecolor});
            //var return_Lab = RGB2Lab(circlecolor);
 			id =14;
 			clickevent();
         });
-	$pccs16.click(function(){var circlecolor = $(this).css("fill");
-			clickedColor2 = circlecolor;
+	$pccs16.click(function(){
+			//clickedColor2 = circlecolor;
            //$selectedcolor2.css({"fill": circlecolor});
            //var return_Lab = RGB2Lab(circlecolor);
 			id =16;
 			clickevent();
         });
-	$pccs18.click(function(){var circlecolor = $(this).css("fill");
-			clickedColor2 = circlecolor;
+	$pccs18.click(function(){
+			//clickedColor2 = circlecolor;
            //$selectedcolor2.css({"fill": circlecolor});
            //var return_Lab = RGB2Lab(circlecolor);
 			id =18;
 			clickevent();
         });
-	$pccs20.click(function(){var circlecolor = $(this).css("fill");
-			clickedColor2 = circlecolor;
+	$pccs20.click(function(){
+			//clickedColor2 = circlecolor;
            //$selectedcolor2.css({"fill": circlecolor});
            //var return_Lab = RGB2Lab(circlecolor);
 			id =20;
 			clickevent();
         });
-	$pccs22.click(function(){var circlecolor = $(this).css("fill");
-			clickedColor2 = circlecolor;
+	$pccs22.click(function(){
+			//clickedColor2 = circlecolor;
            //$selectedcolor2.css({"fill": circlecolor});
            //var return_Lab = RGB2Lab(circlecolor);
 			id =22;
 			clickevent();
         });
-	$pccs24.click(function(){var circlecolor = $(this).css("fill");
-			clickedColor2 = circlecolor;
+	$pccs24.click(function(){
+			//clickedColor2 = circlecolor;
            //$selectedcolor2.css({"fill": circlecolor});
            //var return_Lab = RGB2Lab(circlecolor);
 			id=24;
@@ -189,12 +189,33 @@ $(window).load(function (){
         });
 		
 	
+	//#qualに名義データの色相範囲を指定するためのdiv要素その他もろもろを作成
+	document.getElementById("qual").innerHTML="";
+    var qual_element = document.createElement("div");
+	//innerHTMLの初期化
+    var innerStr = " ";
+	console.log("aaaaaaa");
+	for(var i=0; i<12; i++){
+		//作成する色の数だけid=color2nの箱を作成し、配置する。
+		innerStr = innerStr+("<div id=\"QualColorScheme"+i+"\" class=\"qscheme\">"+" "+"</div>");
+	}
+	qual_element.innerHTML = innerStr;
+    var object2 = document.getElementById("qual");
+    object2.appendChild(qual_element);
+	for(var i=0; i<12; i++){
+		var color = pcs[i];
+		color = color[0];
+		console.log("color="+color);
+		var idName = "#QualColorScheme"+i;
+		$(idName).css("background-color", color);
+	}
+	
 	
 	//ページ読み込み時の初期化
 		defineScale2();
         var hogehoge = "#EE0026";//リストから色を取得
         
-	makeColorCircle();
+	    makeColorCircle();
 	
 	
 		maincolor=hogehoge;

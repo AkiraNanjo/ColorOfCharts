@@ -1,4 +1,11 @@
-
+.qscheme{
+	width: 42px;
+	height: 30px;
+	display: table-cell;
+}
+#qual{
+	padding: 9px;
+}
 
 .scheme1{
     display: table-cell;

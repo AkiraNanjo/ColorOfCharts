@@ -13,6 +13,7 @@ var id=2; //現在選択されているトーンのid
 var sequential_scheme = [];
 var selectedchart = "circle";
 var backgroundcolor = "#ffffff";
+var minimun_delta = 15;
 
 
 //calc():名義尺度用の色を作成する

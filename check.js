@@ -1,3 +1,5 @@
+
+
 //背景色とチャートの色の被りを検出する
 function checkbackgroundcolor(){
 	var flag = false;
@@ -35,7 +37,7 @@ function checkbackgroundcolor(){
 	for(var i=0; i<colornum2;i++){
 		backLab = RGB2Lab(chartcolorscheme[i]);
 		deltaE = Math.sqrt(Math.pow(backLab.LS-chartLab.LS,2)+Math.pow(backLab.aS-chartLab.aS,2)+Math.pow(backLab.bS-chartLab.bS,2));
-		if(deltaE < 13){
+		if(deltaE < minimun_delta){
 			//$("#chartplace").css("border-style","dashed");
 			//$("#chartplace").css("border-color","#ff0000");
 			flag = true;
@@ -76,7 +78,7 @@ function checkbalanceadjoincolor(){
 			hex = $(idName).css("background-color");
 			rightLab = RGB2Lab(new RGBColor(hex).toRGB());
 			deltaE = Math.sqrt(Math.pow(leftLab.LS-rightLab.LS,2)+Math.pow(leftLab.aS-rightLab.aS,2)+Math.pow(leftLab.bS-rightLab.bS,2));
-			if(deltaE < 13){
+			if(deltaE < minimun_delta){
 				$(labelname).css("opacity", 0.3);
 				break;
 			}else{
@@ -129,8 +131,10 @@ function coloring_recommended_ton_label(tone){
 		case "Vivid":
 			for(var i=0; i<12; i++){
 				labelname="#"+tonename[i]+"label";
-				if(labelname=="#Softlabel"||labelname=="#Brightlabel"||labelname=="#Deeplabel"||labelname=="#Vividlabel"){
+				if(labelname=="#Brightlabel"||labelname=="#Deeplabel"||labelname=="#Vividlabel"||labelname=="#Strong"){
 					$(labelname).css("color", "red");
+				}else if (labelname=="#Palelabel"||labelname=="#LightGrayishlabel"||labelname=="#Grayishlabel"||labelname=="#DarkGrayishlabel"){
+					$(labelname).css("color", "blue");
 				}else{
 					$(labelname).css("color", "black");
 				}
@@ -139,8 +143,10 @@ function coloring_recommended_ton_label(tone){
 		case "Bright":
 			for(var i=0; i<12; i++){
 				labelname="#"+tonename[i]+"label";
-				if(labelname=="#Vividlabel"||labelname=="#Brightlabel"||labelname=="#Stronglabel"||labelname=="#Lightlabel"||labelname=="#Softlabel"){
+				if(labelname=="#Vividlabel"||labelname=="#Brightlabel"||labelname=="#Stronglabel"||labelname=="#Lightlabel"||labelname=="#Softlabel"||labelname=="#Dulllabel"){
 					$(labelname).css("color", "red");
+				}else if (labelname=="#Palelabel"||labelname=="#LightGrayishlabel"||labelname=="#Grayishlabel"||labelname=="#DarkGrayishlabel"||labelname=="#Deeplabel"||labelname=="#Darklabel"){
+					$(labelname).css("color", "blue");
 				}else{
 					$(labelname).css("color", "black");
 				}
@@ -149,8 +155,10 @@ function coloring_recommended_ton_label(tone){
 		case "Strong":
 			for(var i=0; i<12; i++){
 				labelname="#"+tonename[i]+"label";
-				if(labelname=="#Stronglabel"||labelname=="#Vividlabel"||labelname=="#Brightlabel"||labelname=="#Deeplabel"||labelname=="#Softlabel"||labelname=="#Dulllabel"){
+				if(labelname=="#Stronglabel"||labelname=="#Vividlabel"||labelname=="#Brightlabel"||labelname=="#Deeplabel"||labelname=="#Softlabel"||labelname=="#Dulllabel"||labelname=="#Lightlabel"||labelname=="#Darklabel"){
 					$(labelname).css("color", "red");
+				}else if (labelname=="#Palelabel"||labelname=="#LightGrayishlabel"||labelname=="#Grayishlabel"||labelname=="#DarkGrayishlabel"){
+					$(labelname).css("color", "blue");
 				}else{
 					$(labelname).css("color", "black");
 				}
@@ -159,8 +167,10 @@ function coloring_recommended_ton_label(tone){
 		case "Deep":
 			for(var i=0; i<12; i++){
 				labelname="#"+tonename[i]+"label";
-				if(labelname=="#Deeplabel"||labelname=="#Vividlabel"||labelname=="#Stronglabel"||labelname=="#Dulllabel"||labelname=="#Darklabel"){
+				if(labelname=="#Deeplabel"||labelname=="#Vividlabel"||labelname=="#Stronglabel"||labelname=="#Dulllabel"||labelname=="#Darklabel"||labelname=="#Softlabel"){
 					$(labelname).css("color", "red");
+				}else if (labelname=="#Palelabel"||labelname=="#LightGrayishlabel"||labelname=="#Grayishlabel"||labelname=="#DarkGrayishlabel"||labelname=="#Brightlabel"||labelname=="#Lightlabel"){
+					$(labelname).css("color", "blue");
 				}else{
 					$(labelname).css("color", "black");
 				}
@@ -169,8 +179,10 @@ function coloring_recommended_ton_label(tone){
 		case "Light":
 			for(var i=0; i<12; i++){
 				labelname="#"+tonename[i]+"label";
-				if(labelname=="#Lightlabel"||labelname=="#Brightlabel"||labelname=="#Softlabel"||labelname=="#Palelabel"||labelname=="#LightGrayishlabel"){
+				if(labelname=="#Lightlabel"||labelname=="#Brightlabel"||labelname=="#Softlabel"||labelname=="#Palelabel"||labelname=="#LightGrayishlabel"||labelname=="#Stronglabel"){
 					$(labelname).css("color", "red");
+				}else if (labelname=="#Deeplabel"||labelname=="#Darklabel"||labelname=="#DarkGrayishlabel"){
+					$(labelname).css("color", "blue");
 				}else{
 					$(labelname).css("color", "black");
 				}
@@ -179,7 +191,7 @@ function coloring_recommended_ton_label(tone){
 		case "Soft":
 			for(var i=0; i<12; i++){
 				labelname="#"+tonename[i]+"label";
-				if(labelname=="#Softlabel"||labelname=="#Brightlabel"||labelname=="#Stronglabel"||labelname=="#Lightlabel"||labelname=="#Dulllabel"||labelname=="#Palelabel"||labelname=="#LightGrayishlabel"){
+				if(labelname=="#Softlabel"||labelname=="#Brightlabel"||labelname=="#Stronglabel"||labelname=="#Lightlabel"||labelname=="#Dulllabel"||labelname=="#Palelabel"||labelname=="#LightGrayishlabel"||labelname=="#Deeplabel"||labelname=="#Grayishlabel"){
 					$(labelname).css("color", "red");
 				}else{
 					$(labelname).css("color", "black");
@@ -189,7 +201,7 @@ function coloring_recommended_ton_label(tone){
 		case "Dull":
 			for(var i=0; i<12; i++){
 				labelname="#"+tonename[i]+"label";
-				if(labelname=="#Dulllabel"||labelname=="#Stronglabel"||labelname=="#Deeplabel"||labelname=="#Softlabel"||labelname=="#Darklabel"||labelname=="#LightGrayishlabel"||labelname=="#Grayishlabel"){
+				if(labelname=="#Dulllabel"||labelname=="#Stronglabel"||labelname=="#Deeplabel"||labelname=="#Softlabel"||labelname=="#Darklabel"||labelname=="#LightGrayishlabel"||labelname=="#Grayishlabel"||labelname=="#Brightlabel"||labelname=="#DarkGrayishlabel"){
 					$(labelname).css("color", "red");
 				}else{
 					$(labelname).css("color", "black");
@@ -201,6 +213,8 @@ function coloring_recommended_ton_label(tone){
 				labelname="#"+tonename[i]+"label";
 				if(labelname=="#Darklabel"||labelname=="#Deeplabel"||labelname=="#Dulllabel"||labelname=="#Grayishlabel"||labelname=="#DarkGrayishlabel"){
 					$(labelname).css("color", "red");
+				}else if (labelname=="#Brightlabel"||labelname=="#Lightlabel"||labelname=="#Palelabel"){
+					$(labelname).css("color", "blue");
 				}else{
 					$(labelname).css("color", "black");
 				}
@@ -211,6 +225,8 @@ function coloring_recommended_ton_label(tone){
 				labelname="#"+tonename[i]+"label";
 				if(labelname=="#Palelabel"||labelname=="#Lightlabel"||labelname=="#Softlabel"||labelname=="#LightGrayishlabel"){
 					$(labelname).css("color", "red");
+				}else if (labelname=="#Vividlabel"||labelname=="#Brightlabel"||labelname=="#Stronglabel"||labelname=="#Deeplabel"||labelname=="#Darklabel"||labelname=="#DarkGrayishlabel"){
+					$(labelname).css("color", "blue");
 				}else{
 					$(labelname).css("color", "black");
 				}
@@ -221,6 +237,8 @@ function coloring_recommended_ton_label(tone){
 				labelname="#"+tonename[i]+"label";
 				if(labelname=="#LightGrayishlabel"||labelname=="#Lightlabel"||labelname=="#Softlabel"||labelname=="#Dulllabel"||labelname=="#Palelabel"||labelname=="#Grayishlabel"){
 					$(labelname).css("color", "red");
+				}else if (labelname=="#Vividlabel"||labelname=="#Brightlabel"||labelname=="#Stronglabel"||labelname=="#Deeplabel"){
+					$(labelname).css("color", "blue");
 				}else{
 					$(labelname).css("color", "black");
 				}
@@ -231,6 +249,8 @@ function coloring_recommended_ton_label(tone){
 				labelname="#"+tonename[i]+"label";
 				if(labelname=="#Grayishlabel"||labelname=="#Softlabel"||labelname=="#Dulllabel"||labelname=="#Darklabel"||labelname=="#LightGrayishlabel"||labelname=="#DarkGrayishlabel"){
 					$(labelname).css("color", "red");
+				}else if (labelname=="#Vividlabel"||labelname=="#Brightlabel"||labelname=="#Stronglabel"||labelname=="#Deeplabel"){
+					$(labelname).css("color", "blue");
 				}else{
 					$(labelname).css("color", "black");
 				}
@@ -241,6 +261,8 @@ function coloring_recommended_ton_label(tone){
 				labelname="#"+tonename[i]+"label";
 				if(labelname=="#DarkGrayishlabel"||labelname=="#Dulllabel"||labelname=="#Darklabel"||labelname=="#Grayishlabel"){
 					$(labelname).css("color", "red");
+				}else if (labelname=="#Vividlabel"||labelname=="#Brightlabel"||labelname=="#Stronglabel"||labelname=="#Deeplabel"||labelname=="#Lightlabel"||labelname=="#Palelabel"){
+					$(labelname).css("color", "blue");
 				}else{
 					$(labelname).css("color", "black");
 				}
